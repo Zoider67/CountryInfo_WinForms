@@ -28,12 +28,12 @@ namespace CountryInfo_WinForms
             string content = new StreamReader(response.GetResponseStream()).ReadToEnd();
             return content;
         }
-        public CountryDataFromJson GetCountryJSON()
+        public CountryData GetCountryJSON()
         {
             string content = GetContentFromApi();
             var list = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(content);
             Json = list.First();
-            return new CountryDataFromJson(Json);
+            return new CountryData(Json);
 
         }
 

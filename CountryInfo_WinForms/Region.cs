@@ -23,5 +23,11 @@ namespace CountryInfo_WinForms
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Country> Countries { get; set; }
+
+        public static Region FromJson(Dictionary<string, object> Json)
+        {
+            return new Region { Name = (string)Json["region"] };
+        }
+
     }
 }

@@ -7,28 +7,19 @@ using System.Threading.Tasks;
 
 namespace CountryInfo_WinForms
 {
-    class CountryDataFromJson
+    class CountryData
     {
         public Region region { get; set; }
         public City city { get; set; }
         public Country country { get; set; }
         public CountriesDBContext dBContext { get; set; }
 
-        public CountryDataFromJson(Dictionary<string, object> json)
+        public CountryData(Dictionary<string, object> json)
         {
             dBContext = new CountriesDBContext();
-            region = new Region { Name = (string)json["region"] };
-            city = new City { Name = (string)json["capital"] };
-            country = new Country
-            {
-                Name = (string)json["name"],
-                Code = Int32.Parse((string)json["numericCode"]),
-                City = city,
-                Area = float.Parse(((double)json["area"]).ToString()),
-                Population = Convert.ToInt32((Int64)json["population"]),
-                Region1 = region
-            };
-
+            region = Region.FromJson(json);
+            city = City.FromJson(json);
+            country = Country.FromJson(json, city, region);
         }
 
         public void SaveDataToDB()

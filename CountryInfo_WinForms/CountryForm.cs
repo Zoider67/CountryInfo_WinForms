@@ -14,7 +14,7 @@ namespace CountryInfo_WinForms
     {
 
         public string CountryToFind;
-        private CountryDataFromJson countryData;
+        private CountryData countryData;
 
         public CountryForm()
         {

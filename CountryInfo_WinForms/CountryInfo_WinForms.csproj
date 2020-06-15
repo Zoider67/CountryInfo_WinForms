@@ -63,7 +63,7 @@
   <ItemGroup>
     <Compile Include="City.cs" />
     <Compile Include="Country.cs" />
-    <Compile Include="CountryDataFromJson.cs" />
+    <Compile Include="CountryData.cs" />
     <Compile Include="CountriesDBContext.cs" />
     <Compile Include="CountryForm.cs">
       <SubType>Form</SubType>
