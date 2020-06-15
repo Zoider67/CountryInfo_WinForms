@@ -71,6 +71,7 @@
     <Compile Include="CountryForm.Designer.cs">
       <DependentUpon>CountryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CountryJSONFromApi.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

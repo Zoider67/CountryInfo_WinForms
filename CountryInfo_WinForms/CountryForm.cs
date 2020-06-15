@@ -1,12 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -40,14 +37,8 @@ namespace CountryInfo_WinForms
 
         private void GetCountryDataFromAPI(string countryName)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://restcountries.eu/rest/v2/name/" + countryName);
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            string content = new StreamReader(response.GetResponseStream()).ReadToEnd();
-            Dictionary<string, object> CountryAtrrsDict;
-            var json = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(content);
-            CountryAtrrsDict = json.First();
-            countryData = new CountryDataFromJson(CountryAtrrsDict);
-
+            CountryJSONFromApi countryJSON = new CountryJSONFromApi("https://restcountries.eu/rest/v2/name/", countryName);
+            countryData = countryJSON.GetCountryJSON();
         }
 
         private void SetCountryInfo()
