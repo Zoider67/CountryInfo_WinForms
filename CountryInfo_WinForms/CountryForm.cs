@@ -26,11 +26,19 @@ namespace CountryInfo_WinForms
 
         private void CountryForm_Load(object sender, EventArgs e)
         {
-            GetCountryDataFromAPI(CountryToFind);
-            SetCountryInfo();
+            try
+            {
+                GetCountryDataFromAPI(CountryToFind);
+                SetCountryInfo();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Close();
+            }            
         }
 
-        private async void GetCountryDataFromAPI(string countryName)
+        private void GetCountryDataFromAPI(string countryName)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://restcountries.eu/rest/v2/name/" + countryName);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();

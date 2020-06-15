@@ -26,6 +26,7 @@ namespace CountryInfo_WinForms
 
         private void ShowFromDBButton_Click(object sender, EventArgs e)
         {
+            CountryData.Rows.Clear();
             using (CountriesDBContext dBContext = new CountriesDBContext())
             {
                 foreach(Country country in dBContext.Countries)

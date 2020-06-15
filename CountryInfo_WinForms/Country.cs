@@ -8,11 +8,11 @@ namespace CountryInfo_WinForms
 
     public partial class Country
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
         public int Id { get; set; }
 
         [Required]
-        [StringLength(30)]
+        [StringLength(100)]
         public string Name { get; set; }
 
         public int Code { get; set; }
