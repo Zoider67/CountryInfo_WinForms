@@ -30,7 +30,7 @@ namespace CountryInfo_WinForms
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Ошибка");
                 Close();
             }            
         }
@@ -59,7 +59,13 @@ namespace CountryInfo_WinForms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            countryData.SaveDataToDB();
+            try
+            {
+                countryData.SaveDataToDB();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
             Close();
         }
     }

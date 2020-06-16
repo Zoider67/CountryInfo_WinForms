@@ -27,18 +27,26 @@ namespace CountryInfo_WinForms
         private void ShowFromDBButton_Click(object sender, EventArgs e)
         {
             CountryData.Rows.Clear();
-            using (CountriesDBContext dBContext = new CountriesDBContext())
+            List<Country> countries;
+            try
             {
-                var CountriesToShow = dBContext.Countries.ToList();
-                foreach(Country country in CountriesToShow)
+                using (CountriesDBContext dBContext = new CountriesDBContext())
                 {
-                    CountryData.Rows.Add(country.Name,
-                                         country.Code.ToString(),
-                                         country.CapitalNavigation.Name,
-                                         country.Area.ToString(),
-                                         country.Population.ToString(),
-                                         country.RegionNavigation.Name);
+                    var CountriesToShow = dBContext.Countries.ToList();
+                    foreach (Country country in CountriesToShow)
+                    {
+                        CountryData.Rows.Add(country.Name,
+                                             country.Code.ToString(),
+                                             country.CapitalNavigation.Name,
+                                             country.Area.ToString(),
+                                             country.Population.ToString(),
+                                             country.RegionNavigation.Name);
+                    }
                 }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
             }
         }
     }
