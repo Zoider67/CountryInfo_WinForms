@@ -24,7 +24,7 @@ namespace CountryInfo_WinForms
 
             modelBuilder.Entity<City>()
                 .HasMany(e => e.Countries)
-                .WithRequired(e => e.City)
+                .WithRequired(e => e.CapitalNavigation)
                 .HasForeignKey(e => e.Capital)
                 .WillCascadeOnDelete(false);
 
@@ -38,7 +38,7 @@ namespace CountryInfo_WinForms
 
             modelBuilder.Entity<Region>()
                 .HasMany(e => e.Countries)
-                .WithRequired(e => e.Region1)
+                .WithRequired(e => e.RegionNavigation)
                 .HasForeignKey(e => e.Region)
                 .WillCascadeOnDelete(false);
         }

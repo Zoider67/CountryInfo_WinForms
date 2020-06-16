@@ -25,9 +25,9 @@ namespace CountryInfo_WinForms
 
         public int Region { get; set; }
 
-        public virtual City City { get; set; }
+        public virtual City CapitalNavigation { get; set; }
 
-        public virtual Region Region1 { get; set; }
+        public virtual Region RegionNavigation { get; set; }
 
         public static Country FromJson(Dictionary<string, object> Json, City city, Region region)
         {
@@ -35,10 +35,10 @@ namespace CountryInfo_WinForms
             {
                 Name = (string)Json["name"],
                 Code = Int32.Parse((string)Json["numericCode"]),
-                City = city,
+                CapitalNavigation = city,
                 Area = float.Parse(((double)Json["area"]).ToString()),
                 Population = Convert.ToInt32((Int64)Json["population"]),
-                Region1 = region
+                RegionNavigation = region
             };
         }
     }

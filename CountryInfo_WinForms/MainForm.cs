@@ -29,14 +29,15 @@ namespace CountryInfo_WinForms
             CountryData.Rows.Clear();
             using (CountriesDBContext dBContext = new CountriesDBContext())
             {
-                foreach(Country country in dBContext.Countries)
+                var CountriesToShow = dBContext.Countries.ToList();
+                foreach(Country country in CountriesToShow)
                 {
                     CountryData.Rows.Add(country.Name,
                                          country.Code.ToString(),
-                                         country.City.Name,
+                                         country.CapitalNavigation.Name,
                                          country.Area.ToString(),
                                          country.Population.ToString(),
-                                         country.Region1.Name);
+                                         country.RegionNavigation.Name);
                 }
             }
         }

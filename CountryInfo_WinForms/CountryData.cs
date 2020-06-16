@@ -34,7 +34,7 @@ namespace CountryInfo_WinForms
             }
             else
             {
-                country.City = dbCity;
+                country.CapitalNavigation = dbCity;
             }
             Region dbRegion = dBContext.Regions.FirstOrDefault(x => x.Name.Equals(region.Name));
             if (dbRegion == null)
@@ -45,7 +45,7 @@ namespace CountryInfo_WinForms
             }
             else
             {
-                country.Region1 = dbRegion;
+                country.RegionNavigation = dbRegion;
             }
             Country dbCountry = dBContext.Countries.FirstOrDefault(x => x.Code == country.Code);
             if (dbCountry == null)
